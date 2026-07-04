@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jewels by Laiba — Minimal. Elegant. Everyday Luxury.</title>
+<meta name="description" content="Handpicked jewelry for soft-glam lovers. Gold kara, rings, necklaces, lockets, earrings & more. DM to order — fast shipping across Pakistan.">
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="Jewels by Laiba — Everyday Luxury">
+<meta property="og:description" content="Handpicked jewelry for soft-glam lovers. Minimal. Elegant. Everyday Luxury.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --porcelain:#FBF9F5;
+    --sand:#E8DFD0;
+    --ink:#1A1714;
+    --gold:#B8912F;
+    --gold-light:#C9A54B;
+    --bronze:#8C6D34;
+    --muted:#7A7167;
+    --hair:rgba(184,145,47,.45);
+    --display:'Cormorant Garamond', Georgia, serif;
+    --body:'Jost', system-ui, sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--porcelain);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  ::selection{background:var(--gold);color:var(--porcelain)}
+
+  /* ---- shared layout ---- */
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--bronze);font-weight:400;
+  }
+  .hairline{height:1px;background:var(--hair);border:0;width:100%}
+
+  /* ---- top bar ---- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,5vw,64px);
+    background:rgba(251,249,245,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s, padding .4s;
+  }
+  header.scrolled{border-bottom-color:var(--hair);padding:12px clamp(20px,5vw,64px)}
+  .brand{font-family:var(--display);font-size:1.5rem;letter-spacing:.04em;font-weight:600}
+  .brand span{display:block;font-family:var(--body);font-size:.58rem;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--muted);margin-top:-4px;text-align:center}
+  nav{display:flex;gap:34px;align-items:center}
+  nav a{font-size:.82rem;letter-spacing:.06em;color:var(--ink);position:relative;padding:4px 0}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--gold);transition:width .35s}
+  nav a:hover::after{width:100%}
+  .nav-links{display:flex;gap:34px}
+  .nav-cta{
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--ink);padding:9px 20px;border-radius:2px;
+    transition:background .3s,color .3s;
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--porcelain)}
+  .nav-cta::after{display:none}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0}
+  .burger span{width:24px;height:1.5px;background:var(--ink);transition:.3s}
+
+  /* ---- hero ---- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding-top:90px;padding-bottom:60px;
+  }
+  .hero .wrap{width:100%}
+  .hero-eyebrow{margin-bottom:26px}
+  .hero h1{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(3.2rem,11vw,9rem);
+    line-height:.94;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);font-weight:400}
+  .hero-sub{
+    margin-top:34px;max-width:440px;font-size:1.05rem;color:var(--muted);
+    font-weight:300;line-height:1.75;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400;
+    padding:15px 30px;border-radius:2px;transition:.35s;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ink);color:var(--porcelain)}
+  .btn-primary:hover{background:var(--bronze)}
+  .btn-ghost{border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--porcelain)}
+  .btn svg{width:15px;height:15px}
+
+  .hero-meta{
+    position:absolute;bottom:38px;left:0;right:0;
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:20px;flex-wrap:wrap;
+  }
+  .hero-meta .wrap{display:flex;justify-content:space-between;width:100%;gap:30px;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column;gap:2px}
+  .stat b{font-family:var(--display);font-size:1.9rem;font-weight:600;line-height:1}
+  .stat small{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .scroll-hint{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+    writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}
+  .scroll-hint::after{content:"";width:1px;height:40px;background:var(--hair)}
+
+  /* fine chain divider (signature) */
+  .chain{display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 0}
+  .chain::before,.chain::after{content:"";height:1px;background:var(--hair);flex:1}
+  .chain .link{width:7px;height:7px;border:1px solid var(--gold);border-radius:50%;
+    transform:rotate(45deg);flex:none}
+
+  /* ---- section frame ---- */
+  section{position:relative}
+  .sec-pad{padding:clamp(70px,10vw,130px) 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;
+    gap:30px;margin-bottom:56px;flex-wrap:wrap}
+  .sec-head h2{font-family:var(--display);font-weight:500;
+    font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.02;letter-spacing:-.01em}
+  .sec-head p{max-width:340px;color:var(--muted);font-size:.98rem}
+  .index-num{font-family:var(--display);color:var(--gold);font-size:1rem;font-style:italic}
+
+  /* ---- collections grid ---- */
+  .collections{background:var(--porcelain)}
+  .col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+    border:1px solid var(--hair)}
+  .col-card{
+    position:relative;background:var(--sand);aspect-ratio:3/4;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:28px;cursor:pointer;transition:.5s;
+  }
+  .col-card .col-bg{position:absolute;inset:0;z-index:0;transition:transform .8s ease}
+  .col-card:hover .col-bg{transform:scale(1.06)}
+  .col-card::after{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(26,23,20,.78) 0%,rgba(26,23,20,.15) 55%,transparent 100%)}
+  .col-card .col-body{position:relative;z-index:2;color:var(--porcelain)}
+  .col-card .col-idx{position:absolute;top:24px;left:28px;z-index:2;
+    font-family:var(--display);font-style:italic;font-size:1rem;color:rgba(251,249,245,.85)}
+  .col-card h3{font-family:var(--display);font-weight:500;font-size:1.75rem;line-height:1}
+  .col-card .col-price{font-size:.78rem;letter-spacing:.1em;color:rgba(251,249,245,.8);margin-top:8px}
+  .col-card .col-go{display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    opacity:0;transform:translateY(8px);transition:.4s}
+  .col-card:hover .col-go{opacity:1;transform:translateY(0)}
+
+  /* gemstone gradient backdrops per category */
+  .g-kara{background:radial-gradient(120% 120% at 30% 20%,#E9C877 0%,#B8912F 45%,#6E5320 100%)}
+  .g-rings{background:radial-gradient(120% 120% at 70% 30%,#F0E4C8 0%,#C9A54B 50%,#7A5E24 100%)}
+  .g-neck{background:radial-gradient(120% 120% at 40% 30%,#EBD9B4 0%,#B8912F 55%,#5E4718 100%)}
+  .g-lock{background:radial-gradient(120% 120% at 60% 20%,#D8C79E 0%,#A6832F 50%,#4E3C14 100%)}
+  .g-ear{background:radial-gradient(120% 120% at 30% 30%,#F2E6C4 0%,#C9A54B 50%,#6E5320 100%)}
+  .g-bangle{background:radial-gradient(120% 120% at 50% 20%,#C7A2C9 0%,#9B5FA0 40%,#4B2A55 100%)}
+
+  /* ---- story / promise ---- */
+  .story{background:var(--ink);color:var(--porcelain)}
+  .story .eyebrow{color:var(--gold-light)}
+  .story-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,7vw,100px);align-items:center}
+  .story h2{font-family:var(--display);font-weight:400;
+    font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.12;letter-spacing:-.01em}
+  .story h2 em{color:var(--gold-light);font-style:italic}
+  .story p{color:rgba(251,249,245,.72);margin-top:24px;font-size:1.02rem;max-width:460px}
+  .promise-list{display:grid;gap:2px;border:1px solid rgba(201,165,75,.28)}
+  .promise{display:flex;gap:20px;padding:26px 28px;background:rgba(255,255,255,.02);align-items:flex-start}
+  .promise .p-num{font-family:var(--display);font-style:italic;color:var(--gold-light);
+    font-size:1.15rem;flex:none;width:34px}
+  .promise h4{font-family:var(--display);font-size:1.35rem;font-weight:500;margin-bottom:4px}
+  .promise small{color:rgba(251,249,245,.6);font-size:.9rem;line-height:1.55;display:block}
+
+  /* ---- how to order ---- */
+  .order{background:var(--porcelain)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);
+    border:1px solid var(--hair)}
+  .step{background:var(--porcelain);padding:40px 32px;position:relative}
+  .step .s-num{font-family:var(--display);font-style:italic;color:var(--gold);
+    font-size:2.4rem;line-height:1;margin-bottom:18px}
+  .step h4{font-family:var(--display);font-size:1.5rem;font-weight:500;margin-bottom:8px}
+  .step p{color:var(--muted);font-size:.94rem}
+
+  /* ---- reviews ---- */
+  .reviews{background:var(--sand)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .rev-card{background:var(--porcelain);padding:32px;border:1px solid var(--hair);
+    display:flex;flex-direction:column;gap:16px}
+  .rev-stars{color:var(--gold);letter-spacing:3px;font-size:.9rem}
+  .rev-card p{font-family:var(--display);font-size:1.28rem;font-style:italic;line-height:1.4;color:var(--ink)}
+  .rev-by{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:auto}
+
+  /* ---- final CTA ---- */
+  .cta{background:var(--ink);color:var(--porcelain);text-align:center}
+  .cta h2{font-family:var(--display);font-weight:400;
+    font-size:clamp(2.4rem,7vw,5rem);line-height:1.02;letter-spacing:-.01em}
+  .cta h2 em{color:var(--gold-light);font-style:italic}
+  .cta p{color:rgba(251,249,245,.68);max-width:420px;margin:24px auto 0;font-size:1.05rem}
+  .cta-actions{display:flex;gap:16px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+  .cta .btn-primary{background:var(--gold);color:var(--ink)}
+  .cta .btn-primary:hover{background:var(--gold-light)}
+  .cta .btn-ghost{border-color:rgba(251,249,245,.5);color:var(--porcelain)}
+  .cta .btn-ghost:hover{background:var(--porcelain);color:var(--ink)}
+
+  /* ---- footer ---- */
+  footer{background:var(--porcelain);padding:56px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;
+    gap:40px;flex-wrap:wrap;margin-bottom:40px}
+  .foot-brand{font-family:var(--display);font-size:1.7rem;font-weight:600}
+  .foot-brand span{display:block;font-family:var(--body);font-size:.58rem;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--muted);margin-top:-2px}
+  .foot-tag{color:var(--muted);font-size:.92rem;margin-top:12px;max-width:240px}
+  .foot-col h5{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--bronze);margin-bottom:16px}
+  .foot-col a{display:block;font-size:.94rem;color:var(--ink);margin-bottom:10px;transition:color .3s}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;
+    gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+
+  /* floating WhatsApp */
+  .wa-float{
+    position:fixed;bottom:24px;right:24px;z-index:200;
+    width:56px;height:56px;border-radius:50%;background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 30px rgba(37,211,102,.4);transition:transform .3s;
+  }
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---- responsive ---- */
+  @media(max-width:860px){
+    .nav-links,.nav-cta{display:none}
+    .burger{display:flex}
+    nav.open .nav-links{
+      display:flex;flex-direction:column;gap:22px;
+      position:fixed;top:64px;left:0;right:0;background:var(--porcelain);
+      padding:30px clamp(20px,5vw,64px);border-bottom:1px solid var(--hair)}
+    .story-grid{grid-template-columns:1fr}
+    .col-grid{grid-template-columns:repeat(2,1fr)}
+    .rev-grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .hero-meta .wrap{gap:20px}
+    .stat b{font-size:1.5rem}
+  }
+  @media(max-width:520px){
+    .col-grid{grid-template-columns:1fr}
+    .hero-actions .btn{flex:1;justify-content:center}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="hdr">
+  <a href="#top" class="brand">Jewels<span>by Laiba</span></a>
+  <nav id="nav">
+    <div class="nav-links">
+      <a href="#collections">Collections</a>
+      <a href="#story">Our Promise</a>
+      <a href="#order">How to Order</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+    <a href="https://wa.me/923294976209" class="nav-cta">Order Now</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-eyebrow eyebrow reveal">Handpicked jewelry for soft-glam lovers</div>
+    <h1 class="reveal">Everyday<br><em>Luxury</em>, worn<br>your way.</h1>
+    <p class="hero-sub reveal">Minimal. Elegant. Timeless. A curated collection of gold kara, rings, necklaces, lockets and more — chosen piece by piece, delivered to your door across Pakistan.</p>
+    <div class="hero-actions reveal">
+      <a href="#collections" class="btn btn-primary">Explore Collections
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://wa.me/923294976209" class="btn btn-ghost">DM to Order</a>
+    </div>
+  </div>
+  <div class="hero-meta reveal">
+    <div class="wrap">
+      <div class="stat"><b>2,200+</b><small>Happy followers</small></div>
+      <div class="stat"><b>41K+</b><small>Loves & counting</small></div>
+      <div class="stat"><b>100%</b><small>Handpicked pieces</small></div>
+      <div class="scroll-hint">Scroll</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="chain"><span class="link"></span></div></div>
+
+<!-- ============ COLLECTIONS ============ -->
+<section class="collections sec-pad" id="collections">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">The Collection</div>
+        <h2>Chosen for the<br>soft-glam wardrobe.</h2>
+      </div>
+      <p>Every piece is selected by hand — for the ones who like their sparkle quiet, warm and effortless.</p>
+    </div>
+
+    <div class="col-grid reveal">
+      <a href="https://wa.me/923294976209?text=Hi!%20I'm%20interested%20in%20your%20Gold%20Kara%20collection" class="col-card">
+        <div class="col-bg g-kara"></div>
+        <span class="col-idx">01</span>
+        <div class="col-body">
+          <h3>Gold Kara</h3>
+          <div class="col-price">Statement bangles & cuffs</div>
+          <span class="col-go">Enquire →</span>
+        </div>
+      </a>
+      <a href="https://wa.me/923294976209?text=Hi!%20I'm%20interested%20in%20your%20Rings%20collection" class="col-card">
+        <div class="col-bg g-rings"></div>
+        <span class="col-idx">02</span>
+        <div class="col-body">
+          <h3>Rings</h3>
+          <div class="col-price">Range Rs 350 – 550</div>
+          <span class="col-go">Enquire →</span>
+        </div>
+      </a>
+      <a href="https://wa.me/923294976209?text=Hi!%20I'm%20interested%20in%20your%20Necklace%20collection" class="col-card">
+        <div class="col-bg g-neck"></div>
+        <span class="col-idx">03</span>
+        <div class="col-body">
+          <h3>Necklaces</h3>
+          <div class="col-price">Delicate everyday chains</div>
+          <span class="col-go">Enquire →</span>
+        </div>
+      </a>
+      <a href="https://wa.me/923294976209?text=Hi!%20I'm%20interested%20in%20your%20Lockets%20%26%20Pendants" class="col-card">
+        <div class="col-bg g-lock"></div>
+        <span class="col-idx">04</span>
+        <div class="col-body">
+          <h3>Lockets & Pendants</h3>
+          <div class="col-price">From Rs 999</div>
+          <span class="col-go">Enquire →</span>
+        </div>
+      </a>
+      <a href="https://wa.me/923294976209?text=Hi!%20I'm%20interested%20in%20your%20Earrings%20collection" class="col-card">
+        <div class="col-bg g-ear"></div>
+        <span class="col-idx">05</span>
+        <div class="col-body">
+          <h3>Earrings</h3>
+          <div class="col-price">New collection in</div>
+          <span class="col-go">Enquire →</span>
+        </div>
+      </a>
+      <a href="https://wa.me/923294976209?text=Hi!%20I'm%20interested%20in%20your%20Bangles%20collection" class="col-card">
+        <div class="col-bg g-bangle"></div>
+        <span class="col-idx">06</span>
+        <div class="col-body">
+          <h3>Kashmiri Bangles</h3>
+          <div class="col-price">Rain-drop & seasonal sets</div>
+          <span class="col-go">Enquire →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="chain"><span class="link"></span></div></div>
+
+<!-- ============ STORY / PROMISE ============ -->
+<section class="story sec-pad" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:20px">Why Jewels by Laiba</div>
+        <h2>Small pieces,<br>chosen with <em>care</em>.<br>Made to be worn<br>every single day.</h2>
+        <p>What started as a love for soft, minimal jewelry became a little studio built around one idea — that everyday luxury should feel effortless, honest and within reach. No pushy sales, no guesswork. Just handpicked pieces and a real person on the other side of the chat.</p>
+      </div>
+      <div class="promise-list reveal">
+        <div class="promise">
+          <span class="p-num">i.</span>
+          <div><h4>Handpicked, always</h4><small>Every design is personally selected — nothing mass-listed, nothing you'll regret.</small></div>
+        </div>
+        <div class="promise">
+          <span class="p-num">ii.</span>
+          <div><h4>Fast shipping</h4><small>Carefully packed and shipped quickly, right across Pakistan.</small></div>
+        </div>
+        <div class="promise">
+          <span class="p-num">iii.</span>
+          <div><h4>Order in a DM</h4><small>No complicated checkout. Message on WhatsApp or Instagram and we'll sort the rest.</small></div>
+        </div>
+        <div class="promise">
+          <span class="p-num">iv.</span>
+          <div><h4>Real reviews</h4><small>2,200+ followers and 41k+ loves — built on trust, not hype.</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="chain"><span class="link"></span></div></div>
+
+<!-- ============ HOW TO ORDER ============ -->
+<section class="order sec-pad" id="order">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Simple by design</div>
+        <h2>Three steps to<br>your next favourite piece.</h2>
+      </div>
+      <p>Ordering is done the easy way — through a quick message. Here's exactly how it works.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="s-num">01</div>
+        <h4>Pick your piece</h4>
+        <p>Browse the collections above or our TikTok & Instagram, and note what catches your eye.</p>
+      </div>
+      <div class="step">
+        <div class="s-num">02</div>
+        <h4>Send a DM</h4>
+        <p>Message us on WhatsApp (0329&nbsp;4976209) or Instagram with the piece. We confirm price & availability.</p>
+      </div>
+      <div class="step">
+        <div class="s-num">03</div>
+        <h4>Confirm & ship</h4>
+        <p>Advance payment secures your order, then we pack it beautifully and ship it fast to your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="chain"><span class="link"></span></div></div>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews sec-pad" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Loved by many</div>
+        <h2>Words from the<br>Jewels family.</h2>
+      </div>
+      <p>A few of the messages that make this little studio worth it. Swap these with your real customer reviews any time.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p>"The kara set is even prettier in person. Packing was so cute, delivery was quick — obsessed."</p>
+        <div class="rev-by">— Verified order</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p>"Was nervous ordering online but she's so genuine. My necklace hasn't left my neck since."</p>
+        <div class="rev-by">— Repeat customer</div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-stars">★★★★★</div>
+        <p>"Minimal, elegant, exactly my style. Ordered rings for my sisters too. Highly recommend."</p>
+        <div class="rev-by">— Verified order</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="cta sec-pad">
+  <div class="wrap reveal">
+    <div class="eyebrow" style="color:var(--gold-light);margin-bottom:24px">Ready when you are</div>
+    <h2>Find your<br><em>everyday</em> piece.</h2>
+    <p>Message us to check the latest arrivals, prices and what's back in stock. We'd love to help you pick.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/923294976209" class="btn btn-primary">Order on WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://www.instagram.com/jewelsbylaib" class="btn btn-ghost">Instagram</a>
+      <a href="https://www.tiktok.com/@jewelsbylaib" class="btn btn-ghost">TikTok</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <hr class="hairline" style="margin-bottom:48px">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Jewels<span>by Laiba</span></div>
+        <p class="foot-tag">Minimal. Elegant. Everyday Luxury. Handpicked jewelry, shipped across Pakistan.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Shop</h5>
+        <a href="#collections">Gold Kara</a>
+        <a href="#collections">Rings</a>
+        <a href="#collections">Necklaces</a>
+        <a href="#collections">Lockets & Pendants</a>
+        <a href="#collections">Earrings</a>
+      </div>
+      <div class="foot-col">
+        <h5>Connect</h5>
+        <a href="https://wa.me/923294976209">WhatsApp · 0329 4976209</a>
+        <a href="https://www.instagram.com/jewelsbylaib">Instagram</a>
+        <a href="https://www.tiktok.com/@jewelsbylaib">TikTok</a>
+      </div>
+      <div class="foot-col">
+        <h5>Good to know</h5>
+        <a href="#order">How to order</a>
+        <a href="#story">Our promise</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+    </div>
+    <hr class="hairline">
+    <div class="foot-bottom" style="margin-top:28px">
+      <span>© <span id="yr"></span> Jewels by Laiba. All rights reserved.</span>
+      <span>DM to order · Advance payment · Fast shipping</span>
+    </div>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a href="https://wa.me/923294976209" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.6 6.3A7.9 7.9 0 0 0 12 4a8 8 0 0 0-6.9 12l-1 3.7 3.8-1a8 8 0 0 0 3.8 1h.3a8 8 0 0 0 5.6-13.4ZM12 18.5a6.6 6.6 0 0 1-3.4-.9l-.24-.15-2.5.66.66-2.44-.16-.25A6.6 6.6 0 1 1 12 18.5Zm3.6-4.95c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.5.64-.62.77-.23.15-.43.05a5.4 5.4 0 0 1-1.6-1 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4l.3-.35c.1-.12.13-.2.2-.34a.37.37 0 0 0 0-.35c0-.1-.44-1.06-.6-1.45s-.32-.33-.44-.34h-.38a.72.72 0 0 0-.52.24 2.2 2.2 0 0 0-.68 1.62 3.8 3.8 0 0 0 .8 2 8.7 8.7 0 0 0 3.34 2.96c.47.2.83.32 1.1.41.47.15.9.13 1.23.08.38-.06 1.17-.48 1.33-.94s.17-.86.12-.94-.18-.14-.38-.24Z"/></svg>
+</a>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // header shrink on scroll
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => {
+    hdr.classList.toggle('scrolled', scrollY > 40);
+  });
+
+  // mobile menu
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i) => {
+    el.style.transitionDelay = (i % 4 * 0.08) + 's';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
